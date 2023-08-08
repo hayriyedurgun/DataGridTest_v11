@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Test1.ViewModels;assembly=Test1"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:DataType="vm:MainWindowViewModel"
+        x:Class="Test1.MainWindow"
+        Title="Test1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="1" 
+                  ItemsSource="{Binding .}"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Classes="ScrollableStyle"
+                  Background="Beige"
+                  IsReadOnly="true"
+                  CanUserResizeColumns="true"
+                  SelectionMode="Extended"
+                  HeadersVisibility="Column"
+                  ClipboardCopyMode="ExcludeHeader"
+                  AutoGenerateColumns="True"
+                  DataContext="{Binding People}"
+                  ColumnWidth="350">
+            <DataGrid.Styles>
+                <Style Selector="ScrollBar">
+                    <Setter Property="AllowAutoHide" Value="False" />
+                </Style>
+                <Style Selector="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+            </DataGrid.Styles>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+
+            <Button Content="add"
+                    Width="150"
+                    Height="75"
+                    Command="{Binding AddRandomPerson}" 
+                    IsEnabled="True"/>
+
+            <Button Content="add long"
+                    Width="150"
+                    Height="75"
+                    Command="{Binding AddLongRandomPerson}" />
+
+
+        </StackPanel>
+    </Grid>
+</Window>
