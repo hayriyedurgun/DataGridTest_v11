@@ -10,15 +10,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="250"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="1" 
+        <DataGrid Grid.Row="1"
                   ItemsSource="{Binding .}"
                   HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto"
-                  Classes="ScrollableStyle"
                   Background="Beige"
                   IsReadOnly="true"
                   CanUserResizeColumns="true"
@@ -38,7 +37,6 @@
             </DataGrid.Styles>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-
             <Button Content="add"
                     Width="150"
                     Height="75"
