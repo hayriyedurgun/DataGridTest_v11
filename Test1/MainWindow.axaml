@@ -9,39 +9,46 @@
         Title="Test1">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="250" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="75" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding .}"
-                  HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto"
-                  Background="Beige"
-                  IsReadOnly="true"
-                  CanUserResizeColumns="true"
-                  SelectionMode="Extended"
-                  HeadersVisibility="Column"
-                  ClipboardCopyMode="ExcludeHeader"
-                  AutoGenerateColumns="True"
-                  DataContext="{Binding People}"
-                  ColumnWidth="350">
-            <DataGrid.Styles>
-                <Style Selector="ScrollBar">
-                    <Setter Property="AllowAutoHide" Value="False" />
+        <TreeDataGrid Grid.Row="1"
+                      Source="{Binding .}"
+                      Background="Beige"
+                      CanUserResizeColumns="true"
+                      ScrollViewer.
+                      DataContext="{Binding Source}">
+            <TreeDataGrid.Styles>
+                <Style Selector="TreeDataGridTextCell">
+                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Template">
+                        <ControlTemplate>
+                            <Border x:Name="CellBorder"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    Padding="{TemplateBinding Padding}">
+                                <TextBlock Text="{TemplateBinding Value}"
+                                           TextTrimming="{TemplateBinding TextTrimming}"
+                                           TextWrapping="Wrap"
+                                           VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter>
+
                 </Style>
-                <Style Selector="TextBlock">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-            </DataGrid.Styles>
-        </DataGrid>
+            </TreeDataGrid.Styles>
+        </TreeDataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button Content="add"
                     Width="150"
                     Height="75"
-                    Command="{Binding AddRandomPerson}" 
-                    IsEnabled="True"/>
+                    Command="{Binding AddRandomPerson}"
+                    IsEnabled="True" />
 
             <Button Content="add long"
                     Width="150"
